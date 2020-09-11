@@ -1,0 +1,502 @@
+
+
+        /*************** G E N E R A L ***************/
+
+*{/*lezione 51 float. con asterisco selezioniamo tutti elementi della pagina, con border box facciamo si che tutti gli elemnti ocupino il 50% (in questo caso) di spazio, cioè anche se noi modifichiamo il padding o margin l'oggetto non va ad aumentare o calere il precentuale ma si modiffica sempre e comunque in quei 50% di pazio consentitoli */
+   box-sizing: border-box;
+}
+
+html{/*la dimensione generale per tutti i testi*/
+  font-size: 75%;
+}
+
+img{/*cosi tutte le immagini in tutte le pagine si adatteranno automaticamente alla larghezza dello schermo*/
+  width: 100%;
+}
+
+body{
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.6rem;
+}
+
+a{
+  text-decoration: none;/*sottoliniatura del testo nei link*/
+  font-size: 1.1rem;/*rem è un alternativa ai pixel*/
+  color: green;/*diamo un colore a tutti i link*/
+}
+
+.btn{
+  display: inline-block;/*cosi ocupa solo spazzio necessario e non dal bordo al bordo*/
+  background: #990000;
+  padding: 12px 24px;
+  color: #fff;
+  text-transform: uppercase;
+  border: 0;
+  transition: background .3s;
+  border-radius: 50px;
+  box-shadow: 2px 2px 3px 1px rgba(0, 0, 0, 0.5);/*per fare la sfumatura. ordine di dati: asse X, asse Y, livello di trasparenza di sfumatura, difusione di sfumatura, e i colori*/
+}
+
+.btn:hover{
+  background: #997300;
+}
+
+.clearfix::after {
+	content: "";
+	clear: both;
+	display: table;
+}
+
+.containerGallery{
+  max-width: 900px;/*diamo la larghezza massima consentita ai container*/
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.title{/*dimensioni dei titoli*/
+  font-size: 1.5rem;
+}
+
+main{/*con questa operazione facciamo in modo che footer rimane sempre al suo posto, anche se pagina è vuota il footer comunque rimane giu*/
+  min-height:calc(100vh - 121.8px - 100px);/*tutta l'altezza - header(content+padding) - footer(content+padding).(vedi le dimensioni nella console)
+  min-height 100vh facciamo in modo che il main riempie tutto lo spazzio libero dello schermo(100vh = 100% dello spazzio. il "vh" è unaltra unità di misura)*/
+  /*HEADER e FOOTER devono avere l'altezza fissa in tute le pagine!!!*/
+
+/*  padding-top: 100px;   /*cosi il main non si sovrapone al header */
+}
+
+
+        /*
+        *********************************
+        *********** H E A D E R *********
+        *********************************
+        */
+
+header{
+  background: rgba(102, 77, 0, .7);/*in questo modo diamo il colore al header, ma anche la trasparenza. la diferenza da ** opacity ** (vedi qui sotto) è che in questo modo rendiamo trastparente solamente lo sfondo e non tutto quello che c'è nel header (che va da 0 a 1, come con ** opacity **) ** a ** sta per opacity */
+  text-align: center;
+  top: 0;
+  height: 80px;/*gli diamo altezza di 107px (presa nel inspekt f12) cosi immagine del HERO prende la altezza anche del header, sotto pero, cosi header diventando trasparente mostrera sotto immagine di HERO*/
+  width: 100%;/*container ocupa spazio dal bordo al bordo*/
+  z-index: 1;/*Z è la terza dimensione sul piano cartesiano. con **Z-INDEX** 1 praticamente soleviamo header di 1 nità, cosi scrolando il MAIN ci passa sotto*/
+  position: fixed;/*serve per fissare header su in alto durnte lo scrolling*/
+  /*opacity: .7;/*opacità va da 0 a 1 quindi da 0.1 a 0.9 , lo 0 davanti al punto poi anche non mettere*/
+    box-shadow: 0px 2px 3px 1px rgba(0, 0, 0, 0.5);/*per fare la sfumatura. ordine di dati: asse X, asse Y, livello di trasparenza di sfumatura, difusione di sfumatura, e i colori. se vuoi l'ombra dal altro lato basta che inserisci il numero negativo sul asse X o Y (piano cartesiano)*/
+}
+
+header img{/*immagine del header*/
+  width: 110px;
+  border-radius: 3px;
+  margin: 20px;
+
+}
+
+
+
+
+        /*
+        ******************************************************
+        ******* M E N U   D I   N A V I G A Z I O N E ********
+        ******************************************************
+        */
+
+nav ul{
+  margin: 0;
+  padding: 0;
+  list-style-type: none; /*convertiamo una lista ordinata in una semplice (togliamo le paline su lato sinistra)*/
+}
+
+nav li{
+  display: inline-block;/*l'oggetto ocupa solamete lo spazio necessario, il menu diventa inlinea orizontale*/
+}
+
+nav li a{
+  display: inline-block;
+  font-family: 'Fredoka One', cursive;/*stile di testo menuNav*/
+  color: #cc9900;/*in questo modo cambiamo il colore ai link solamente dentro menuNav */
+  font-weight: bold;/*testo in grassetto*/
+  font-size: 22px;/*dimensioni testo*/
+  text-transform: uppercase;/*tutto il testo maiuscolo*/
+  padding: 5px 20px;/*con 20px aumento la distanza tra i pulsanti*/
+}
+
+.active{/*con questa classe il pulsante del menu rimane sempre acceso e dimostra in che pagina mi trovo*/
+  background: #994d00;/*il colore dello sfondo quando passi con mous*/
+  border-radius: 7px;/*per arotondare gli angoli*/
+
+}
+
+        /********* H E R O   B A N N E R ***********/
+#hero{/*COME METTERE UN IMAGINE COME BACKGROUD*/
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), /*questa pezzo del codice serve per oscurare un po l'immagine di sfondo*/
+                    url("../images/p1.jpg");/*percorso del immagine di sfondo*/
+  /*background-image: linear-gradient(red, green);/*per fare la sfumatura di colori. lezione: PROPRIETA AVANZATA LEZ:9*/
+  background-size: cover;/*con questa proprita si fa in modo che la foto ocupi tutto spazio necessario*/
+  /*background-size: 30%;/*in questo modo l'immagine si ripete tante volte quanto srve per riempire tutto lo spazio*/
+  /*background-position: center;/*decidiamo la posizione della foto in background*/
+  background-attachment: fixed;/*in questo modo la foto rimane ferma in background metre la pagina vi scorre sopra */
+  color: #ffd966;/*colore testo*/
+  padding-top: 80px;/*cosi immagine del HERO pernde la altezza anche del header, sotto pero, cosi header diventando trasparente mostrera sotto immagine di HERO*/
+  position: relative;
+}
+
+#hero .hero-caption{
+  text-align: center;
+  padding: 140px 20px;
+}
+
+#hero h1, h2{
+  text-shadow: 5px 5px 3px rgba(0, 0, 0, 0.8);/*per fare la sfumatura al TESTO. ordine di dati: asse X, asse Y, livello di trasparenza di sfumatura, difusione di sfumatura, e i colori. se vuoi l'ombra dal altro lato basta che inserisci il numero negativo sul asse X o Y (piano cartesiano)*/
+
+}
+
+        /*
+        ******************************************
+        **************** B O D Y *****************
+        ******************************************
+        */
+
+body{
+  margin: 0px;/*in questo modo i box sono dal bordo al bordo, senza lasciare spazio sui lati*/
+  font-size: 1.6rem;/* rem è unaltra unita di misura come px*/
+}
+
+.clearfix::after{/*lezione 52 clearfix. in pratica uniamo tutti gli oggetti nella sezione gallery in un unico oggetto, per unire insieme tutti elementi float in un unico elemento*/
+  content: "";
+  clear: both;
+  display: table;
+}
+
+
+
+        /*
+        ************************************
+        ************** M A I N *************
+        ************************************
+        */
+
+#gallery{/*le spiegazioni puoi vedere nella guida FLEX*/
+  padding-top: 15px;
+  padding-bottom: 15px;
+  }
+
+#gallery{/*COME METTERE UN IMAGINE COME BACKGROUD*/
+  background-image: url("../images/p1-3.jpg");
+  background-size: cover;/*con questa proprita si fa in modo che la foto ocupi tutto spazio necessario*/
+  background-attachment: fixed;/*in questo modo la foto rimane ferma in background metre la pagina vi scorre sopra */
+
+  }
+
+.galleryFlex{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#gallery img{/*in questo modo la foto ocupa tutto lo spazzio del container*/
+  width: 100%;/*con "width" 100% lefoto ocupano spazio giusto dal bordo al bordo*/
+  border-radius: 7px 7px 0 0;/*cosi le immagini del main hanno gli angoli smussati solo quelli sopra*/
+
+}
+
+#gallery .item {/*con "gallery .item" rievochiamo ID gallery + classe .item*/
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis: 50%;
+  padding: 15px;
+  /*float: left;/*ci permette di decidere il posizionamento di un singolo oggetto sulla pagina(lezione 51)*/
+  /*width: 50%;/*con questo facciamo in modo che il contenitore ocupa solo 50% dello spazio*/
+  /*padding: 15px;/*per distanziare le immagini tra di loro*/
+  position: relative;/*dando al elemento #gallery.item **POSITION RELATIVE** facciamo si che gli elementi sottostanti si posizionano relativamente a questo elemento*/
+}
+
+#gallery a{
+  display: block;
+  box-shadow: -2px 2px 3px 1px rgba(0, 0, 0, 0.5);/*per fare la sfumatura. ordine di dati: asse X, asse Y, livello di trasparenza di sfumatura, difusione di sfumatura, e i colori. se vuoi l'ombra dal altro lato basta che inserisci il numero negativo sul asse X o Y (piano cartesiano)*/
+}
+
+
+#gallery .caption{
+  background: #ffd9b3;
+  padding: 10px;/*padding è lo spazio circostante atorno al oggetto*/
+}
+
+#gallery .caption p{
+  margin: 0;
+}
+
+#gallery .picture{/*con questo comando eliminiamo lo spazio che aggiunge normalize tra foto e link sotto*/
+  line-height: 0;
+}
+
+#gallery .caption img{/*si tratta dell mini immagine(position absolute/relative)*/
+  position: absolute;/*se un elemento ha una position **ABSOLUTE** la sua posizione è relativa al primo elemento parent che ha una position **RELATIVE**, se non c'è nessun elemento con position relative la position di quest'ultimo è relattiva al root element(cio è body html) */
+  top: 0;
+  right: 0;
+  width: 30px;
+}
+
+
+          /********** A B O U T *********/
+
+#about, #contact{/*COME METTERE UN IMAGINE COME BACKGROUD*/
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), /*questa pezzo del codice serve per oscurare un po l'immagine di sfondo*/
+                    url("../images/p1-2.jpg");
+  background-size: cover;/*con questa proprita si fa in modo che la foto ocupi tutto spazio necessario*/
+  background-attachment: fixed;/*in questo modo la foto rimane ferma in background metre la pagina vi scorre sopra */
+
+}
+
+#about h2, #contact h2{
+  display: inline;
+  padding: 7px;
+  background-color: black;
+  color: #fff2cc;
+  border-radius: 7%
+}
+
+.container p{
+  color: #fff2cc;
+}
+
+#about img{
+  border-radius: 100%;
+
+}
+
+#about{
+  padding: 30px;
+  /*background-color: #fff5cc;*/
+}
+
+        /***** C O N T A C T S *****/
+
+#contact{  /*background-color: #c0dbdb;*/
+  padding: 30px;
+}
+
+.contacts{
+  padding-left: 25px;
+}
+
+#contact ul{
+  list-style-type: none;/*togliamo le palline da sinistra nel elnco*/
+  padding: 0;
+}
+
+#contact li{
+  padding: 5px 0;
+}
+
+#contact .material-icons{/*mini icona di fianco al num di cell*/
+  float: left;
+  color: red;
+}
+
+#contact .contacts a{
+  background-color: #595959;
+  padding: 3px;
+  border-radius: 3px;
+  margin: 3px 0 0 5px;
+  display: inline-block;
+  font-weight: bold;/*testo in grassetto*/
+  color: #e6e600;
+
+}
+
+
+          /*
+          ******************************************
+          *************** F O O T E R **************
+          ******************************************
+          */
+
+
+.stileTesto{/*stile di testo, solo della scritta paragrafo del FOOTER*/
+  font-family: 'Indie Flower', cursive;
+  text-align: center;/*testo al centro*/
+  font-size: 30px;/*dimensioni testo*/
+  margin-bottom: auto;
+}
+
+.stileTesto2{
+  font-family: sans-serif;
+  font-size: 10px;
+}
+
+.footerMain{
+  /*clear: both;/*questo comando esola "FOOTER" da gli "FLOAT", cioè footer rimane sempre al suo posto*/
+  background:#00001a;/*colore sfondo*/
+  text-align: center;/*aliniamento al centro. NOTA BENE!! NON SOLO PER IL TESTO!*/
+  font-size: 20px;/*dimensione del testo*/
+  color: #ffcc00;/*colore testo*/
+  padding: 10px 0;/*definisco la ampiezza del box*/
+}
+
+.footerLink a{/*i link del facebook e linkedIn*/
+  display: inline-block;
+  padding: 0 15px 5px 0;/*dimensioni di pulsanti F e IN*/
+  text-decoration: none;/*il testo del link non è piu sottolineato*/
+
+}
+
+.footerMain p{/*faccio in modo che tra etichette "F" e "IN" e la scritta sotto c'è meno spazzio*/
+  margin: auto;
+}
+
+                  /**********************************************
+                **** M E D I A   Q U E R Y S   LE Z I O N E 55 ****
+                                === RESPONSIVE ===
+                  **********************************************/
+
+
+@media only screen and (min-width: 768px) {/*con questa media query dichiariamo che per gli schermi sotto 768px vale la regola generale, invece per gli schermi piu drandi di 768px vale la regola dichiarata nella query, cioè le regole generali vengono sovraschritte*/
+
+  /**************G A L L E R Y**************/
+
+      #gallery .item{
+        flex: 0 1 33.333%;
+      }
+
+          /********** A B O U T *********/
+
+      #about img{
+        width: 40%;
+      }
+
+      #about .profPicture{/*facciamo in modo che su gli schermi piugrandi di un smartphone l'immagine si sposta difianco il testo */
+        float: left;
+        width: 50%;/*quanto spazio deve ocuppare oggetto*/
+        padding: 15px;
+        text-align: center;
+
+      }
+
+      #about .profText{/*facciamo in modo che su gli schermi piugrandi di un smartphone l'immagine si sposta difianco il testo */
+        float: right;
+        width: 50%;/*quanto spazio deve ocuppare oggetto*/
+        padding: 30px 15px 15px;
+      }
+
+      /*****C O N T A C T S*****/
+
+      #contact.info #contact.contacts{
+        padding: 15px;
+      }
+
+      #contact .info{/*facciamo in modo che su gli schermi piugrandi di un smartphone l'immagine si sposta difianco il testo */
+        float: left;
+        width: 70%;
+      }
+
+      #contact .contacts{/*facciamo in modo che su gli schermi piugrandi di un smartphone l'immagine si sposta difianco il testo */
+        float: right;
+        width: 30%;
+      }
+  }
+
+
+@media only screen and (min-width: 992px) {/*con questa media query loschermo piu grande di 900px avra lo sfondo verde*/
+
+  /****** H E A D E R ********/
+  header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+
+  /****** M E N U   D I   N A V ******/
+  #menuNav li a{
+    transition: background .3s;/*cosi apparizione dello losfondo di pulsanti è piu morbido, unpo piu lento*/
+
+  }
+  #menuNav li a:hover{/*pseudo class. qando passiamo con mous suopra cambia colore*/
+    background: #806000;/*il colore dello sfondo quando passi con mous*/
+    border-radius: 7px;/*per arotondare gli angoli*/
+  }
+  /***************MAIN*****************/
+  #gallery .item{
+    transition: .3s;/*applichiamo un ritardo d'azzione*/
+  }
+  #gallery .item:hover{
+    opacity: .8;/*diamo un efetto opacità*/
+  }
+
+
+}
+
+@media only screen and (max-width: 767px) {/*con max-width le regole dichiarate nella query valgono per gli schermi fino a 767px *MAX* OLTRE VALE LA REGOLA GENERALE*/
+
+  /*
+  *********************************
+  *********** H E A D E R *********
+  *********************************
+  */
+
+header{
+  background: rgba(102, 77, 0, .7);/*in questo modo diamo il colore al header, ma anche la trasparenza. la diferenza da ** opacity ** (vedi qui sotto) è che in questo modo rendiamo trastparente solamente lo sfondo e non tutto quello che c'è nel header (che va da 0 a 1, come con ** opacity **) ** a ** sta per opacity */
+  text-align: center;
+  top: 0;
+  height: 80px;/*gli diamo altezza di 107px (presa nel inspekt f12) cosi immagine del HERO prende la altezza anche del header, sotto pero, cosi header diventando trasparente mostrera sotto immagine di HERO*/
+  width: 100%;/*container ocupa spazio dal bordo al bordo*/
+  z-index: 1;/*Z è la terza dimensione sul piano cartesiano. con **Z-INDEX** 1 praticamente soleviamo header di 1 nità, cosi scrolando il MAIN ci passa sotto*/
+  position: fixed;/*serve per fissare header su in alto durnte lo scrolling*/
+  /*opacity: .7;/*opacità va da 0 a 1 quindi da 0.1 a 0.9 , lo 0 davanti al punto poi anche non mettere*/
+}
+
+header img{/*immagine del header*/
+  height: 50px;
+  width: 70px;
+  border-radius: 3px;
+  margin: 10px;
+
+}
+
+  /*
+  ******************************************************
+  ******* M E N U   D I   N A V I G A Z I O N E ********
+  ******************************************************
+  */
+
+
+#menuNav{
+background-color: #ffb366;/*sfondo di menu nav*/
+margin-top: auto;
+}
+
+#menuNav ul{
+list-style-type: none; /*convertiamo una lista ordinata in una semplice (togliamo le paline su lato sinistra)*/
+}
+
+#menuNav li{
+display: inline-block;/*l'oggetto ocupa solamete lo spazio necessario, il menu diventa inlinea orizontale*/
+}
+
+#menuNav li a{
+font-family: 'Fredoka One', cursive;/*stile di testo menuNav*/
+color: #004d00;/*in questo modo cambiamo il colore ai link solamente dentro menuNav */
+font-weight: bold;/*testo in grassetto*/
+font-size: 13px;/*dimensioni testo*/
+text-transform: uppercase;/*tutto il testo maiuscolo*/
+padding: 3px 12px;/*con 20px aumento la distanza tra i pulsanti*/
+}
+
+.active{/*con questa classe il pulsante del menu rimane sempre acceso e dimostra in che pagina mi trovo*/
+background: #994d00;/*il colore dello sfondo quando passi con mous*/
+border-radius: 7px;/*per arotondare gli angoli*/
+
+}
+
+
+    /**************GALLERY**************/
+  #gallery .item:nth-child(2n + 1){/*serve in caso quando alcuni elementi sono piu grandi dei altri, in questo modo gli elementi rispettino il loro posto*/
+    clear: left;
+  }
+
+      /********** A B O U T *********/
+  #about img{/*faccio l'immagine un po piu piccola per gli cell*/
+    padding: 55px;
+
+  }
+
+}
