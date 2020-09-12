@@ -419,7 +419,8 @@ body{
     transition: .3s;/*applichiamo un ritardo d'azzione*/
   }
   #gallery .item:hover{
-    opacity: .8;/*diamo un efetto opacità*/
+    opacity: .9;/*diamo un efetto opacità*/
+    transform:scale(1.1);
   }
 
 
