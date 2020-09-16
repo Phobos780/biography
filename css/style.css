@@ -235,19 +235,6 @@ body{
   width: 30px;
 }
 
-/******* E S E M P I O  D I  A N I M A Z I O N E  C S S *********/
-#gallery .item1{
-  width: 260px;
-  height: 145px;
-  transition: width 2s, height 4s;/*quanto tempo ci deve impiegare per allargarsi e allungarsi*/
-}
-
-#gallery .item1:hover{
-  width: 400px;/*di quanto si deve allungare*/
-  height: 200px;/*di quanto si deve allargare*/
-}
-/********* E N D ***********/
-
 
           /********** A B O U T *********/
 
@@ -444,6 +431,19 @@ body{
     opacity: .9;/*diamo un efetto opacità*/
     transform:scale(1.1);
   }
+
+  /******* E S E M P I O  D I  A N I M A Z I O N E  C S S *********/
+  #gallery .item1{
+    width: 260px;
+    height: 145px;
+    transition: width 2s, height 4s;/*quanto tempo ci deve impiegare per allargarsi e allungarsi*/
+  }
+
+  #gallery .item1:hover{
+    width: 400px;/*di quanto si deve allungare*/
+    height: 200px;/*di quanto si deve allargare*/
+  }
+  /********* E N D ***********/
 
 
 }
