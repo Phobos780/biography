@@ -404,7 +404,7 @@ body{
   }
 
 
-@media only screen and (min-width: 992px) {/*con questa media query loschermo piu grande di 900px avra lo sfondo verde*/
+@media only screen and (min-width: 992px) {/*le regole dichiarate qui dentro valgono solo per gli schermi grandi*/
 
   /****** H E A D E R ********/
   header{
@@ -483,7 +483,6 @@ header img{/*immagine del header*/
 
 
 #menuNav{
-background-color: #ffb366;/*sfondo di menu nav*/
 margin-top: auto;
 }
 
