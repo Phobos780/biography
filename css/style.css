@@ -121,7 +121,7 @@ nav li a{
 }
 
 .active{/*con questa classe il pulsante del menu rimane sempre acceso e dimostra in che pagina mi trovo*/
-  background: #994d00;/*il colore dello sfondo quando passi con mous*/
+  background: rgba(102, 77, 0, .7);/*in questo modo diamo il colore al header, ma anche la trasparenza. la diferenza da ** opacity ** (vedi qui sotto) è che in questo modo rendiamo trastparente solamente lo sfondo e non tutto quello che c'è nel header (che va da 0 a 1, come con ** opacity **) ** a ** sta per opacity */
   border-radius: 7px;/*per arotondare gli angoli*/
 
 }
